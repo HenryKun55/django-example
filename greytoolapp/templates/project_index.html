@@ -1,19 +1,20 @@
 {% extends "base.html" %}
 {% load static %}
-
-{% block content %}
+{% block content %}   
     {% for project in projects %}
-        <div class="col-md-4">
-            <div class="card mb-2">
-                <img class="card-img-top" src="{% static project.image %}">
+        <div class="card mb-2" style="min-height: 350px; max-width: 250px; margin: 0 20px;">
+            <img class="card-img-top" src="{{ project.image }}" style="height: 150px;">
                 <div class="card-body">
                     <h5 class="card-title">{{ project.title }}</h5>
-                    <p class="card-text">{{ project.description }}</p>
+                    <p style="height: 80px;" class="card-text">{{ project.description }}</p>
                     <a href="{% url 'project' project.pk %}"
-                    class="btn btn-primary" style="display: flex; justify-content: center;">
-                        Ver
+                    class="btn btn-primary" style="margin-bottom: 5px; display: flex; justify-content: center;">
+                    Ver
                     </a>
-                </div>
+                    <a href="{% url 'rmProjectButton' project.pk %}"
+                    class="btn btn-danger" style="display: flex; justify-content: center;">
+                    Remover
+                    </a>
             </div>
         </div>
     {% endfor %}

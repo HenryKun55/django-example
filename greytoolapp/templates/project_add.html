@@ -2,24 +2,35 @@
 {% load static %}
 
 {% block content %}
-<div style="display: flex; justify-content: flex-end;">
-    <a href="{% url 'index' %}" class="btn btn-primary" >
-        Voltar
-    </a>
-</div>
-<h1>{{ project.title }}</h1>
+<hr>
+<div class="col-md-8">
+    <h3>Adicionar Projeto</h1>
+    <hr>
     <div class="row">
-        <div class="col-md-8">
-            <img src="{% static project.image %}" alt="" width="100%">
-        </div>
-        <div class="col-md-4">
-            <h5>Título</h5>
-            <p>{{ project.description }}</p>
-            <h5>Título</h5>
-            <p>{{ project.description }}</p>
-            <br>
-            <h5>Technology:</h5>
-            <p>{{ project.technology }}</p>
+        <div class="col-md-12">
+            <form class="form-signin" method="POST" action="{% url 'addProjectButton' %}">
+                {% csrf_token %}
+                    <h5>Título:</h5>
+                    <input style="border-radius: 10px; border: 1px solid thistle; padding:0 10px" type="text" name="titulo" placeholder="Título" required>
+                    <br>
+                    <br>
+                    <h5>Descrição:</h5>
+                    <input style="border-radius: 10px; border: 1px solid thistle; padding:0 10px" type="text" name="descricao" placeholder="Descrição" required>
+                    <br>
+                    <br>
+                    <h5>Tecnologia:</h5>
+                    <input style="border-radius: 10px; border: 1px solid thistle; padding:0 10px" type="text" name="tecnologia" placeholder="Tecnologia" required>
+                    <br>
+                    <br>
+                    <h5>Foto:</h5>
+                    <input style="border-radius: 10px; border: 1px solid thistle; padding:0 10px" type="text" name="foto_url" placeholder="Cole uma url de imagem" required>
+                    <br>
+                    <br>
+                    <div style="display: flex; justify-content: flex-end;">
+                        <input class="btn btn-success" type="submit" value="Adicionar">
+                    </div>
+            </form> 
         </div>
     </div>
+</div>
 {% endblock %}
